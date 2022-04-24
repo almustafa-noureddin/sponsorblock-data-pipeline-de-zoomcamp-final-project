@@ -1,0 +1,12 @@
+services:
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "3000:3000"
+    networks:
+      - airflow
+
+networks:
+  airflow:
+    external:
+      name: airflow_default

@@ -1,0 +1,69 @@
+
+version: 2
+
+sources:
+  - name: sbdb
+    database: sponsorblock 
+    schema: dbt_raw 
+    tables:
+      - name: categoryVotes
+      - name: lockCategories
+      - name: ratings
+      - name: sponsorTimes
+      - name: unlistedVideos
+      - name: userNames
+      - name: videoInfo
+      - name: vipUsers
+      - name: warnings
+
+models:
+    - name: categories_model
+      description: "Provides all categories and number of segments in it"
+      columns:
+          - name: category
+            description: "the category name"
+            tests:
+                - unique
+                - not_null
+          - name: total
+            description: "the total number of segments"
+            tests:
+                - not_null
+
+    - name: stats_model
+      description: "Provides general stats about the users"
+      columns:
+          - name: total_active_users
+            description: "The total number of active users"
+            tests:
+                - not_null
+          - name: number_of_conributing_users
+            description: "The total number of contributing users"
+            tests:
+                - not_null
+          - name: total_submissions
+            description: "The total number of submissions"
+            tests:
+                - not_null
+          - name: total_saved_time
+            description: "The total number of time saved"
+            tests:
+                - not_null
+
+    - name: leaderboard_model
+      description: "Provides the leaderboard"
+      columns:
+          - name: user_name
+            description: "The name of the user"
+          - name: total_submissions
+            description: "The total number of submissions"
+            tests:
+                - not_null
+          - name: total_skips
+            description: "The total number of skips"
+            tests:
+                - not_null
+          - name: total_saved_time
+            description: "The total time saved"
+            tests:
+                - not_null

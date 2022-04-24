@@ -1,0 +1,14 @@
+my_profile:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 1
+      host: 
+      port: 
+      user: 
+      pass: 
+      dbname: 
+      schema: 
+
+  target: dev
