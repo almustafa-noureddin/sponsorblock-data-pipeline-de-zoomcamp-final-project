@@ -1,4 +1,5 @@
 ignore_me
+logs
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
