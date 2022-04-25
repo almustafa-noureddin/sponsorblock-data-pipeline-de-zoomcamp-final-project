@@ -1,13 +1,15 @@
 {{ config(materialized='table') }}
 
-with source_data as (
+WITH source_data AS (
 
-    select category,count(category) as total
-    from {{ source('sbdb','sponsortimes') }}
-    group by category
-    order by total desc
+    SELECT 
+        category,
+        count(category) AS total
+    FROM {{ source('sbdb','sponsortimes') }}
+    GROUP BY category
+    ORDER BY total DESC
 
 )
 
-select *
-from source_data
+SELECT *
+FROM source_data
